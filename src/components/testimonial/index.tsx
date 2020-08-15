@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import classnames from 'classnames';
 import Image from '../image';
 
@@ -13,7 +13,7 @@ interface TestimonialProps {
   image?: { src: string; alt: string };
 }
 
-const Testimonial: FC<TestimonialProps> = (props) => {
+const Testimonial: FC<TestimonialProps> = memo((props) => {
   const { className, title, subtitle, text, borderColor, image, ...otherProps } = props;
 
   const rootClass = classnames(
@@ -40,6 +40,6 @@ const Testimonial: FC<TestimonialProps> = (props) => {
       {text && <p className={styles.text}>{text}</p>}
     </div>
   );
-};
+});
 
 export default Testimonial;
