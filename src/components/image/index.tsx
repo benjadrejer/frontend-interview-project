@@ -6,6 +6,7 @@ interface Props {
   src: Src;
   className?: string;
   alt?: string;
+  circle?: boolean;
 }
 
 interface State {
@@ -21,7 +22,7 @@ const initialState: State = {
 };
 
 const Image: FC<Props> = (props) => {
-  const { className, src, alt, ...otherProps } = props;
+  const { className, src, alt, circle, ...otherProps } = props;
   const [state, setState] = useState<State>(initialState);
 
   const handleSource = async (source: Src): Promise<void> => {
@@ -57,6 +58,7 @@ const Image: FC<Props> = (props) => {
       [styles.image]: true,
       [styles.error]: state.isLoadingError,
       [styles.complete]: state.isLoadingComplete,
+      [styles.circle]: circle,
     },
     className,
   );
